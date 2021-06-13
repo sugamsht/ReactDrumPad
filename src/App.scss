@@ -1,0 +1,286 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+$padWidth: 100px;
+$padHeight: 100px;
+$background: black; 
+/* background by SVGBackgrounds.com */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  background-color: #ffff00;
+  background: $background;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+#root {
+  display: grid;
+  margin: auto;
+  place-items: center;
+  height: 100vh;
+  background-color: rgba(200, 200, 200, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.Border {
+  border: 7px solid black;
+  border-radius: 5px;
+}
+
+.App {
+  font-size: 1.4rem;
+  padding: 5px 20px 70px;
+  display: grid;
+  grid-template-columns: [first] 70px [pad-start] auto [controller-start] 100px [end];
+  grid-template-rows: [header-start] 50px [line-one] 80px [pad-start] auto [pad-end];
+  background-color: lighten(#1e2025, 8);
+  color: white;
+}
+
+.Logo {
+  grid-column: first / end;
+  font-family: "Monoton", cursive;
+  font-size: 2.2rem;
+  &--rainbow-text {
+    background-image: linear-gradient(
+      to left,
+      lighten(violet, 10),
+      lighten(indigo, 30),
+      lighten(blue, 25),
+      lighten(green, 20),
+      yellow,
+      orange,
+      red
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+.Controls {
+  font-size: 2rem;
+  grid-column: controller-start / end;
+  grid-row: pad-start / pad-end;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  &__power {
+    cursor: pointer;
+    // margin-bottom: 5em;
+  }
+  &__volume {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+}
+
+.Controls2 {
+  grid-column: first / controller-start;
+  display: flex;
+  align-items: center;
+  & > * {
+    margin: 0 1rem;
+  }
+  &__bank {
+    display: flex;
+    align-items: center;
+    & span {
+      padding-right: 1rem;
+    }
+  }
+  &__switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    box-shadow: inset 1px 1px 1px #000000, inset 0px 0px 1px #0d0d0d;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    & input {
+      display: none;
+      &:focus + .Controls2__switch__slider {
+        box-shadow: 0 0 1px #2196f3;
+      }
+      &:checked + .Controls2__switch__slider:before {
+        -webkit-transform: translateX(-26px);
+        -ms-transform: translateX(-26px);
+        transform: translateX(-26px);
+      }
+      &:checked + .Controls2__switch__slider:after {
+        content: "II";
+        left: 75%;
+      }
+    }
+    &__slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      &:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 30px;
+        bottom: 4px;
+        background-color: white;
+      }
+      &:after {
+        content: "I";
+        color: black;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  &__display {
+    background-color: #cccccc;
+    box-shadow: inset 1px 1px 1px #000000, inset 0px 0px 1px #0d0d0d;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    color: black;
+    width: 200px;
+    height: 34px;
+    font-family: "VT323", monospace;
+    font-weight: bold;
+    font-size: 1.8rem;
+    display: grid;
+    place-items: center;
+  }
+}
+
+.PadBank {
+  display: grid;
+  grid-column: pad-start / controller-start;
+  grid-row: pad-start / pad-end;
+  gap: 15px;
+  grid-template-columns: repeat(3, $padWidth);
+  grid-template-rows: repeat(3, $padHeight);
+}
+
+.DrumPad {
+  width: $padWidth;
+  height: $padHeight;
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+  background-color: white;
+  box-shadow: inset 0 -0.5em 0 -0.35em rgba(0, 0, 0, 0.17);
+  z-index: 2;
+}
+
+// Cross-browser input range customization referenced from https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
+$thumb-height: 36px;
+$thumb-width: 16px;
+$thumb-border-radius: 3px;
+$thumb-background: #ffffff;
+
+$track-width: 200px;
+$track-height: 8.4px;
+$track-background: #cccccc;
+$track-background-focus: #cccccc;
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: $track-width;
+  transform: rotate(270deg);
+  position: relative;
+  bottom: 90px;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  width: $track-width;
+  height: $track-height;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: $track-background;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: $thumb-height;
+  width: $thumb-width;
+  border-radius: $thumb-border-radius;
+  background: $thumb-background;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: $track-background-focus;
+}
+input[type="range"]::-moz-range-track {
+  width: $track-width;
+  height: $track-height;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: $track-background;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type="range"]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: $thumb-height;
+  width: $thumb-width;
+  border-radius: $thumb-border-radius;
+  background: $thumb-background;
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  width: $track-width;
+  height: $track-height;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type="range"]::-ms-fill-upper {
+  background: $track-background;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type="range"]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: $thumb-height;
+  width: $thumb-width;
+  border-radius: $thumb-border-radius;
+  background: $thumb-background;
+  cursor: pointer;
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: $track-background;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: $track-background-focus;
+}

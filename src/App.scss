@@ -3,7 +3,18 @@
 $padWidth: 100px;
 $padHeight: 100px;
 $background: black; 
-/* background by SVGBackgrounds.com */
+$borderColor : linear-gradient(
+  60deg,
+  hsl(224, 85%, 66%),
+  hsl(269, 85%, 66%),
+  hsl(314, 85%, 66%),
+  hsl(359, 85%, 66%),
+  hsl(44, 85%, 66%),
+  hsl(89, 85%, 66%),
+  hsl(134, 85%, 66%),
+  hsl(179, 85%, 66%)
+);
+
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -24,22 +35,43 @@ body {
   height: 100vh;
   background-color: rgba(200, 200, 200, 0.4);
   backdrop-filter: blur(10px);
-}
 
-.Border {
-  border: 7px solid black;
-  border-radius: 5px;
 }
 
 .App {
+  --border-width: 3px;
+  border-radius: var(--border-width);
+  position: relative;
+
   font-size: 1.4rem;
   padding: 5px 20px 70px;
   display: grid;
   grid-template-columns: [first] 70px [pad-start] auto [controller-start] 100px [end];
   grid-template-rows: [header-start] 50px [line-one] 80px [pad-start] auto [pad-end];
-  background-color: lighten(#1e2025, 8);
+  background: #222;
   color: white;
-}
+
+  &::after {
+      position: absolute;
+      content: "";
+      top: calc(-1 * var(--border-width));
+      left: calc(-1 * var(--border-width));
+      z-index: -1;
+      width: calc(100% + var(--border-width) * 2);
+      height: calc(100% + var(--border-width) * 2);
+      background: $borderColor;
+      background-size: 300% 300%;
+      background-position: 0 50%;
+      border-radius: calc(2 * var(--border-width));
+      animation: moveGradient 4s alternate infinite;
+    }
+  }
+  
+  @keyframes moveGradient {
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 
 .Logo {
   grid-column: first / end;
@@ -56,7 +88,6 @@ body {
       orange,
       red
     );
-    -webkit-background-clip: text;
     color: transparent;
   }
 }

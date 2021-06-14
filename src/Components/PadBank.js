@@ -14,7 +14,6 @@ export default function PadBank(props) {
           clipVol={props.clipVol}
           power={props.power}
           updateDisplay={props.updateDisplay}
-        //   updateBorder={props.updateBorder}
         />
       );
     });

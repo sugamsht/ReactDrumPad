@@ -21,12 +21,12 @@ class DrumPad extends React.Component {
     sound.currentTime = 0;
     sound.play();
     this.props.updateDisplay(this.props.clipId);
-    // this.props.updateBorder(this.props.clipColor);
     this.changeColor();
   }
 
   handleKeyPress(e) {
-    if (!this.props.power) return;
+    if (!this.props.power) 
+    return;
     if (e.keyCode === this.props.keyCode) {
       this.playAudio();
     }

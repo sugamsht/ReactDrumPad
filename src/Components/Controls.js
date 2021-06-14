@@ -12,11 +12,19 @@ export default function Controls (props){
         props.onVolumeChange(e.target.value);
       }
 
-    //   const powerStyle = props.power
+      const powerStyle = props.power
+      ? {
+          color: "#3BFF14"
+        }
+      : {
+          color: "red"
+        };
       return(
           <div className='Controls'>
                 <div className="Controls__power" onClick={handleClick}> 
-                    <FaPowerOff />
+                    <FaPowerOff style={powerStyle}>
+                      
+                    </FaPowerOff>
                 </div>
             <div className="Controls__volume">
             <input

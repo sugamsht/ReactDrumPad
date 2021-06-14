@@ -4,6 +4,7 @@ import {useState} from 'react'
 import Controls from '../Components/Controls'
 import Controls2 from '../Components/Controls2.js'
 import PadBank from '../Components/PadBank'
+import Logo from '../Components/Logo';
 import { bankOne, bankTwo} from '../Components/Sounds'
 
 
@@ -42,7 +43,7 @@ export default function App (){
 
     return (
           <div id="drum-machine" className="App">
-            {/* <Logo name="Drum Machine" /> */}
+            <Logo name="Drum Machine" />
             <Controls
               power={power}
               volume={volume}

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 $padWidth: 100px;
 $padHeight: 100px;
 $background: black; 
@@ -16,16 +17,20 @@ $borderColor : linear-gradient(
 );
 
 
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   user-select: none;
-  background-color: #ffff00;
-  background: $background;
+  background: #de6161;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2657eb, #de6161);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2657eb, #de6161); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  
 }
 
 #root {
@@ -38,11 +43,11 @@ body {
 
 }
 
+// Border animation by alphardex
 .App {
-  --border-width: 3px;
+  --border-width: 5px;
   border-radius: var(--border-width);
   position: relative;
-
   font-size: 1.4rem;
   padding: 5px 20px 70px;
   display: grid;
@@ -73,24 +78,19 @@ body {
     }
   }
 
-.Logo {
-  grid-column: first / end;
-  font-family: "Monoton", cursive;
-  font-size: 2.2rem;
-  &--rainbow-text {
-    background-image: linear-gradient(
-      to left,
-      lighten(violet, 10),
-      lighten(indigo, 30),
-      lighten(blue, 25),
-      lighten(green, 20),
-      yellow,
-      orange,
-      red
-    );
-    color: transparent;
+  .Logo {
+    grid-column: first / end;
+    // font-family: "Monoton", cursive;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2rem;
+    margin-top: 1rem;
+    &--rainbow-text {
+      background-image: $borderColor;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
   }
-}
 
 .Controls {
   font-size: 2rem;
@@ -102,7 +102,6 @@ body {
   align-items: center;
   &__power {
     cursor: pointer;
-    // margin-bottom: 5em;
   }
   &__volume {
     display: flex;
@@ -227,6 +226,7 @@ $track-height: 8.4px;
 $track-background: #cccccc;
 $track-background-focus: #cccccc;
 
+//For range
 input[type="range"] {
   -webkit-appearance: none;
   margin: 18px 0;

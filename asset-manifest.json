@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ReactDrumPad/static/css/main.28a98b6c.chunk.css",
+    "main.js": "/ReactDrumPad/static/js/main.5e6d8a90.chunk.js",
+    "main.js.map": "/ReactDrumPad/static/js/main.5e6d8a90.chunk.js.map",
+    "runtime-main.js": "/ReactDrumPad/static/js/runtime-main.e25371f5.js",
+    "runtime-main.js.map": "/ReactDrumPad/static/js/runtime-main.e25371f5.js.map",
+    "static/js/2.568f07dd.chunk.js": "/ReactDrumPad/static/js/2.568f07dd.chunk.js",
+    "static/js/2.568f07dd.chunk.js.map": "/ReactDrumPad/static/js/2.568f07dd.chunk.js.map",
+    "static/js/3.37990e25.chunk.js": "/ReactDrumPad/static/js/3.37990e25.chunk.js",
+    "static/js/3.37990e25.chunk.js.map": "/ReactDrumPad/static/js/3.37990e25.chunk.js.map",
+    "index.html": "/ReactDrumPad/index.html",
+    "static/css/main.28a98b6c.chunk.css.map": "/ReactDrumPad/static/css/main.28a98b6c.chunk.css.map",
+    "static/js/2.568f07dd.chunk.js.LICENSE.txt": "/ReactDrumPad/static/js/2.568f07dd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e25371f5.js",
+    "static/js/2.568f07dd.chunk.js",
+    "static/css/main.28a98b6c.chunk.css",
+    "static/js/main.5e6d8a90.chunk.js"
+  ]
+}
